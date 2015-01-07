@@ -14,12 +14,22 @@ angular.module("soupebolApp", ["ionic"])
 
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('home', {
+            .state('app', {
+                abstract:true,
+                url: "/app",
+                templateUrl: "app/layout/menu-layout.html"
+
+            })
+            .state('app.home', {
                 abstract: true,
                 url: '/home',
-                templateUrl: "app/home/home.html"
+                views: {
+                    "mainContent": {
+                        templateUrl: "app/home/home.html"
+                    }
+                }
             })
-            .state('home.welcome', {
+            .state('app.home.welcome', {
                 url: '/welcome',
                 views: {
                     "tab-welcome": {
@@ -28,18 +38,37 @@ angular.module("soupebolApp", ["ionic"])
                 }
 
             })
-            .state('home.menu', {
+            .state('app.home.menu', {
                 url: '/menu',
                 views: {
                     "tab-menu": {
-                        templateUrl: "app/home/menu.html"
+                        templateUrl: "app/menu/menu.html"
                     }
                 }
             })
-            .state('app', {
-                url: "/app",
-                templateUrl: "app/layout/menu-layout.html"
-
+            .state('app.home.popular', {
+                url: '/popular',
+                views: {
+                    "tab-popular": {
+                        templateUrl: "app/menu/popular.html"
+                    }
+                }
+            })
+            .state('app.map', {
+                url: '/map',
+                views: {
+                    "mainContent": {
+                        templateUrl: "app/contact/map.html"
+                    }
+                }
+            })
+            .state('app.contact', {
+                url: '/contact',
+                views: {
+                    "mainContent": {
+                        templateUrl: "app/contact/contact-info.html"
+                    }
+                }
             });
-        $urlRouterProvider.otherwise('/home/welcome');
+        $urlRouterProvider.otherwise('/app/home/welcome');
     });

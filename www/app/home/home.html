@@ -3,10 +3,13 @@
 </ion-nav-bar>
 
 <ion-tabs class="bar-light tabs-icon-top">
-    <ion-tab title="Home" icon="ion-home" ui-sref="home.welcome">
+    <ion-tab title="Menu" icon="ion-map" ui-sref="app.home.menu">
+        <ion-nav-view name="tab-menu"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="Home" icon="ion-home" ui-sref="app.home.welcome">
         <ion-nav-view name="tab-welcome"></ion-nav-view>
     </ion-tab>
-    <ion-tab title="Menu" icon="ion-map" ui-sref="home.menu">
-        <ion-nav-view name="tab-menu"></ion-nav-view>
+    <ion-tab title="Popular" icon="ion-heart" ui-sref="app.home.popular">
+        <ion-nav-view name="tab-popular"></ion-nav-view>
     </ion-tab>
 </ion-tabs>
