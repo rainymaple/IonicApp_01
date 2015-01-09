@@ -1,21 +1,16 @@
-angular.module("soupebolApp", ["ngCordova","ionic"])
-    .run(function ($ionicPlatform) {
-        $ionicPlatform.ready(function () {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
-            if (window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            }
-            if (window.StatusBar) {
-                StatusBar.styleDefault();
-            }
+(function () {
+    angular.module("soupebolApp").config(config)
+        .run(function ($rootScope, $state) {
+            $rootScope.$state = $state;
         });
-    })
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    //---------------------------------
+
+    function config($stateProvider, $urlRouterProvider) {
+
         $stateProvider
             .state('app', {
-                abstract:true,
+                abstract: true,
                 url: "/app",
                 templateUrl: "app/layout/menu-layout.html"
 
@@ -79,4 +74,7 @@ angular.module("soupebolApp", ["ngCordova","ionic"])
                 }
             });
         $urlRouterProvider.otherwise('/app/map');
-    });
+
+    }
+
+})();

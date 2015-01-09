@@ -1,13 +1,17 @@
 (function () {
-    angular.module('soupebolApp').factory('foodService', [foodService]);
+    angular.module('soupebolApp').factory('foodService',['config', foodService]);
 
-    function foodService() {
+    function foodService(config) {
         return {
             getAllFood: function () {
                 return getAllFood();
             },
             getAllCategoriesWithFood: function () {
-                return getAllCategoryWithFood();
+                var categories= getAllCategoryWithFood();
+                angular.forEach(categories,function(category,key){
+                    category.image=config.getFoodImage(category.image);
+                });
+                return categories;
             },
             getFoodById: function (id) {
                 var foods = getAllFood();
@@ -65,7 +69,7 @@
                             "categoryId": 1,
                             "isPopular": false,
                             "category": null
-                        }], "id": 1, "name": "Appetizers", "nameF": "Entrées"
+                        }], "image":"appetizer.png", "id": 1, "name": "Appetizers", "nameF": "Entrées"
                 }, {
                 "food": [
                     {
@@ -117,7 +121,7 @@
                         "categoryId": 2,
                         "isPopular": false,
                         "category": null
-                    }], "id": 2, "name": "Soup and Noodles", "nameF": "Soupe et Nuilles"
+                    }], "image":"soup.png", "id": 2, "name": "Soup and Noodles", "nameF": "Soupe et Nuilles"
             }, {
                 "food": [
                     {
@@ -162,7 +166,7 @@
                         "categoryId": 3,
                         "isPopular": false,
                         "category": null
-                    }], "id": 3, "name": "Grilled", "nameF": "Grillades"
+                    }], "image":"grill.png", "id": 3, "name": "Grilled", "nameF": "Grillades"
             },
                 {
                     "food": [
@@ -229,7 +233,7 @@
                             "categoryId": 4,
                             "isPopular": false,
                             "category": null
-                        }], "id": 4, "name": "Meals", "nameF": "Repas"
+                        }], "image":"meal.png", "id": 4, "name": "Meals", "nameF": "Repas"
                 }, {
                 "food": [
                     {
@@ -260,7 +264,7 @@
                         "categoryId": 5,
                         "isPopular": false,
                         "category": null
-                    }], "id": 5, "name": "Speciallities", "nameF": "Spécialités"
+                    }], "image":"special.png", "id": 5, "name": "Speciallities", "nameF": "Spécialités"
             }, {
                 "food": [
                     {
@@ -319,7 +323,7 @@
                         "categoryId": 6,
                         "isPopular": false,
                         "category": null
-                    }], "id": 6, "name": "Beverages", "nameF": "Breuvages"
+                    }], "image":"beverages.png", "id": 6, "name": "Beverages", "nameF": "Breuvages"
             }];
 
         return categoryWithFood;
