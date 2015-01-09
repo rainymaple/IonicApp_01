@@ -1,5 +1,24 @@
-<ion-view title="Menu">
+<ion-view title="Menu" ng-controller="menuCtrl as vm">
     <ion-content class="has-header">
         <h1>This is the Menu</h1>
+
+        <ion-list>
+            <div ng-repeat="category in vm.categories">
+                <ion-item class="item-stable"
+                          ng-click="vm.toggleGroup(category)"
+                          ng-class="{active: vm.isGroupShown(category)}">
+                    <i class="icon" ng-class="vm.isGroupShown(category) ? 'ion-minus-circled' : 'ion-plus-circled'"></i>
+                    {{category.name}}
+                </ion-item>
+                <ion-item class="item-accordion item-icon-right"
+                          ng-repeat="food in category.food"
+                          ng-show="vm.isGroupShown(category)"
+                          ng-click="vm.selectFood(food.id)">
+                    {{food.name}}
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </div>
+        </ion-list>
+
     </ion-content>
 </ion-view>

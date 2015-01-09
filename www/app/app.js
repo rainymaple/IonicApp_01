@@ -1,4 +1,4 @@
-angular.module("soupebolApp", ["ionic"])
+angular.module("soupebolApp", ["ngCordova","ionic"])
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -21,35 +21,35 @@ angular.module("soupebolApp", ["ionic"])
 
             })
             .state('app.home', {
-                abstract: true,
+                //abstract: true,
                 url: '/home',
                 views: {
                     "mainContent": {
-                        templateUrl: "app/home/home.html"
+                        templateUrl: "app/home/welcome.html"
                     }
                 }
             })
-            .state('app.home.welcome', {
+            .state('app.welcome', {
                 url: '/welcome',
                 views: {
-                    "tab-welcome": {
+                    "mainContent": {
                         templateUrl: "app/home/welcome.html"
                     }
                 }
 
             })
-            .state('app.home.menu', {
+            .state('app.menu', {
                 url: '/menu',
                 views: {
-                    "tab-menu": {
+                    "mainContent": {
                         templateUrl: "app/menu/menu.html"
                     }
                 }
             })
-            .state('app.home.popular', {
+            .state('app.popular', {
                 url: '/popular',
                 views: {
-                    "tab-popular": {
+                    "mainContent": {
                         templateUrl: "app/menu/popular.html"
                     }
                 }
@@ -62,6 +62,14 @@ angular.module("soupebolApp", ["ionic"])
                     }
                 }
             })
+            .state('app.food', {
+                url: '/menu/:id',
+                views: {
+                    "mainContent": {
+                        templateUrl: "app/food/food.html"
+                    }
+                }
+            })
             .state('app.contact', {
                 url: '/contact',
                 views: {
@@ -70,5 +78,5 @@ angular.module("soupebolApp", ["ionic"])
                     }
                 }
             });
-        $urlRouterProvider.otherwise('/app/home/welcome');
+        $urlRouterProvider.otherwise('/app/map');
     });
