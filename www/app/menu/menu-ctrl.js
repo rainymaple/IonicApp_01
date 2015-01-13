@@ -7,9 +7,11 @@
         var vm = this;
         vm.categories = foodService.getAllCategoriesWithFood();
 
-        // todo: move to each group with individual image
-        vm.imageGroup = function (image) {
-            return config.getFoodImage(image);
+        vm.categories_shrimp=foodService.getAllCategoriesByFoodName(vm.categories,'shrimp');
+
+        vm.openDropdown=false;
+        vm.toggleDropdown = function(){
+            vm.openDropdown = !vm.openDropdown;
         };
 
         setupAccordion();
