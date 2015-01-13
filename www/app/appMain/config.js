@@ -39,6 +39,7 @@
 
     app.value("config", config);
 
+
     app.config(["$logProvider", function ($logProvider) {
         // turn debugging off/on
         if ($logProvider.debugEnabled) {

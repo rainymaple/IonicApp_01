@@ -1,3 +1,4 @@
+/*item-accordion*/
 .list .item.item-accordion {
     line-height: 38px;
     padding-top: 0;
@@ -10,4 +11,31 @@
 .list .item.item-accordion.ng-hide-add,
 .list .item.item-accordion.ng-hide-remove {
     display: block !important;
+}
+
+/*dropdown-menu*/
+.open > .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+    display: none;
+    float: left;
+    font-weight: 400;
+    font-size: 14px;
+    left: auto;
+    right: 0;
+    list-style: outside none none;
+    min-width: 160px;
+    padding: 0;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    border-radius: 0 0 4px 4px;
+    margin: 4px 0 0;
+    border-top-width: 0px;
+    z-index: 1000;
 }
