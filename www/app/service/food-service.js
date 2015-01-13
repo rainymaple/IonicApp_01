@@ -10,6 +10,22 @@
                 var categories= getAllCategoryWithFood();
                 angular.forEach(categories,function(category,key){
                     category.image=config.getFoodImage(category.image);
+                    category.foodCount=category.food.length;
+                });
+                return categories;
+            },
+            getAllCategoriesByFoodName: function (categoryWithFood,foodName) {
+                var categories= [];
+                angular.forEach(categoryWithFood,function(category){
+                    var foods =_.filter(category.food,function(food){
+                        return food.name.indexOf(foodName)>0;
+                    });
+                    if(foods.length>0){
+                        var cat = angular.copy(category);
+                        cat.food=foods;
+                        cat.foodCount=foods.length;
+                        categories.push(cat);
+                    }
                 });
                 return categories;
             },
@@ -25,6 +41,7 @@
         var categoryWithFood =
             [
                 {
+                    "id": 1, "name": "Appetizers", "nameF": "Entrées","image":"appetizer.png",
                     "food": [
                         {
                             "id": 2,
@@ -69,7 +86,7 @@
                             "categoryId": 1,
                             "isPopular": false,
                             "category": null
-                        }], "image":"appetizer.png", "id": 1, "name": "Appetizers", "nameF": "Entrées"
+                        }]
                 }, {
                 "food": [
                     {
