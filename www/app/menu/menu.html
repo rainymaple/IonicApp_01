@@ -32,12 +32,12 @@
                           ng-class="{active: vm.isGroupShown(category)}">
                     <div style="vertical-align: middle;">
                         <img style="vertical-align: bottom;" ng-src={{category.image}}>
+                        <i class="icon"
+                           ng-class="vm.isGroupShown(category) ? 'icon ion-minus' : 'icon ion-plus'"></i>
 
                         <div style="display: inline-block; margin-left: 5px;margin-right: 5px;padding-bottom: 4px;">
                             {{category.name}}({{category.foodCount}})
                         </div>
-                        <i style="font-size: 20px;color:#00006b;" class="icon"
-                           ng-class="vm.isGroupShown(category) ? 'icon ion-minus-circled' : 'icon ion-plus-circled'"></i>
                     </div>
                 </ion-item>
                 <ion-item class="item-accordion item-icon-right"
