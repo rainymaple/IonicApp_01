@@ -1,3 +1,4 @@
+
 <ion-side-menus enable-menu-with-back-views ng-controller="menuLayoutCtrl as vm">
     <ion-side-menu-content>
         <!--<ion-header-bar class="bar-dark">-->
@@ -14,8 +15,8 @@
         <ion-nav-view name="mainContent" animation="slide-left-right"></ion-nav-view>
 
     </ion-side-menu-content>
-    <ion-side-menu side="left">
-        <header class="bar bar-header bar-stable" style="height: 80px;">
+    <ion-side-menu side="left" id="sideMenu">
+        <header class="bar bar-header bar-stable" style="height: 80px; padding: 0;">
             <img class="full-image" ng-src={{vm.headerImage}}>
         </header>
         <ion-content class="has-header" style="top: 80px;">

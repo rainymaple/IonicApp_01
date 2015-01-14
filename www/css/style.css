@@ -39,3 +39,7 @@
     border-top-width: 0px;
     z-index: 1000;
 }
+
+#sideMenu a{
+    border-width: 0;
+}

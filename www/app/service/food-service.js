@@ -29,10 +29,21 @@
                 });
                 return categories;
             },
+            getPopularFood:function(){
+                var popular= [];
+                var categoryWithFood =getAllCategoryWithFood();
+                angular.forEach(categoryWithFood,function(category){
+                    angular.forEach(category.food,function(food){
+                        if(food.isPopular){
+                            popular.push(food);
+                        }
+                    });
+                });
+                return popular;
+            },
             getFoodById: function (id) {
                 var foods = getAllFood();
-                var food= _.find(foods,{"id":parseInt(id)});
-                return food;
+                return  _.find(foods,{"id":parseInt(id)});
             }
         }
     }
@@ -94,14 +105,14 @@
                         "name": "Rare beef Tonkinese soup",
                         "nameF": "Soupe tonkinoise au boeuf saignant",
                         "categoryId": 2,
-                        "isPopular": false,
+                        "isPopular": true,
                         "category": null
                     }, {
                         "id": 11,
                         "name": "Chicken Tonkinese soup",
                         "nameF": "Soupe tonkinoise au poulet",
                         "categoryId": 2,
-                        "isPopular": false,
+                        "isPopular": true,
                         "category": null
                     }, {
                         "id": 12,
@@ -153,14 +164,14 @@
                         "name": "Grilled chicken with vermicelli",
                         "nameF": "Poulet grillé avec vermicelles",
                         "categoryId": 3,
-                        "isPopular": false,
+                        "isPopular": true,
                         "category": null
                     }, {
                         "id": 23,
                         "name": "Grilled beef with vermicelli",
                         "nameF": "Boeuf grillé avec vermicelles",
                         "categoryId": 3,
-                        "isPopular": false,
+                        "isPopular": true,
                         "category": null
                     }, {
                         "id": 24,
@@ -174,7 +185,7 @@
                         "name": "Grilled chicken with steamed rice",
                         "nameF": "Poulet grillé avec riz vapeur",
                         "categoryId": 3,
-                        "isPopular": false,
+                        "isPopular": true,
                         "category": null
                     }, {
                         "id": 26,
@@ -192,7 +203,7 @@
                             "name": "General Tao chicken",
                             "nameF": "Poulet General Tao",
                             "categoryId": 4,
-                            "isPopular": false,
+                            "isPopular": true,
                             "category": null
                         }, {
                             "id": 28,

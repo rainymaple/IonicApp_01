@@ -1,5 +1,11 @@
 <ion-view title="Popular Dishes">
-    <ion-content class="has-header">
-        <h1>This is the Popular</h1>
+    <ion-content class="has-header" ng-controller="popularCtrl as vm">
+        <div class="list">
+            <a class="item item-thumbnail-left" href="#" ng-repeat="food in vm.popularFoods">
+                <img ng-src={{food.image}}>
+                <h2>{{food.name}}</h2>
+                <p>Nine Inch Nails</p>
+            </a>
+        </div>
     </ion-content>
 </ion-view>
