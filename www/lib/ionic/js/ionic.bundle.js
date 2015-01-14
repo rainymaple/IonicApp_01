@@ -21559,12 +21559,12 @@ function $RootScopeProvider() {
 
 
            // Using a function as a watchExpression
-           var food;
+           var category;
            scope.foodCounter = 0;
            expect(scope.foodCounter).toEqual(0);
            scope.$watch(
              // This function returns the value being watched. It is called for each turn of the $digest loop
-             function() { return food; },
+             function() { return category; },
              // This is the change listener, called when the value returned from the above function changes
              function(newValue, oldValue) {
                if ( newValue !== oldValue ) {
@@ -21576,12 +21576,12 @@ function $RootScopeProvider() {
            // No digest has been run so the counter will be zero
            expect(scope.foodCounter).toEqual(0);
 
-           // Run the digest but since food has not changed count will still be zero
+           // Run the digest but since category has not changed count will still be zero
            scope.$digest();
            expect(scope.foodCounter).toEqual(0);
 
-           // Update food and run digest.  Now the counter will increment
-           food = 'cheeseburger';
+           // Update category and run digest.  Now the counter will increment
+           category = 'cheeseburger';
            scope.$digest();
            expect(scope.foodCounter).toEqual(1);
 

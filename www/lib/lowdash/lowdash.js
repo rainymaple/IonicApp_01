@@ -2660,7 +2660,7 @@
          * _.merge(names, ages);
          * // => { 'characters': [{ 'name': 'barney', 'age': 36 }, { 'name': 'fred', 'age': 40 }] }
          *
-         * var food = {
+         * var category = {
      *   'fruits': ['apple'],
      *   'vegetables': ['beet']
      * };
@@ -2670,7 +2670,7 @@
      *   'vegetables': ['carrot']
      * };
          *
-         * _.merge(food, otherFood, function(a, b) {
+         * _.merge(category, otherFood, function(a, b) {
      *   return _.isArray(a) ? a.concat(b) : undefined;
      * });
          * // => { 'fruits': ['apple', 'banana'], 'vegetables': ['beet', 'carrot] }

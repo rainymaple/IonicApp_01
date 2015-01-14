@@ -9,7 +9,7 @@
             getAllCategoriesWithFood: function () {
                 var categories= getAllCategoryWithFood();
                 angular.forEach(categories,function(category,key){
-                    category.image=config.getFoodImage(category.image);
+                    category.image=config.getImage('category/'+category.image);
                     category.foodCount=category.food.length;
                 });
                 return categories;

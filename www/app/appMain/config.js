@@ -5,12 +5,12 @@
     var url = window.location.href;
     var wwwPath = url.substr(0, url.indexOf('index.html'));
     var dataServicePrefix = "/api/";
-    var foodImagePath = wwwPath+'img/food/';
+    var imagePath = wwwPath+'img/';
 
     var config = {
         docTitle: "Soupebol",
         dataServicePrefix: dataServicePrefix,
-        getFoodImage: getFoodImage,
+        getImage: getImage,
         dataServicePath: buildDataServicePath,
         cacheMaxAge: 5000,
         wwwPath: wwwPath,
@@ -19,8 +19,8 @@
         version: '1.0.0'
     };
 
-    function getFoodImage(fileName) {
-        return foodImagePath + fileName.trim();
+    function getImage(fileName) {
+        return imagePath + fileName.trim();
     }
 
     function buildDataServicePath(endPoint) {
