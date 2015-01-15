@@ -65,6 +65,14 @@
                     }
                 }
             })
+            .state('app.language', {
+                url: '/layout/language',
+                views: {
+                    "mainContent": {
+                        templateUrl: "app/layout/language.html"
+                    }
+                }
+            })
             .state('app.contact', {
                 url: '/contact',
                 views: {

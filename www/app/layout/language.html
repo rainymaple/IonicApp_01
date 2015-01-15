@@ -1,0 +1,23 @@
+<ion-view title="Languages">
+    <ion-content class="has-header" ng-controller="languageCtrl as vm">
+        <div class="list">
+
+            <label class="item item-thumbnail-left item-radio"
+                   style="padding-bottom: 16px;padding-top: 16px;min-height:60px;padding-left: 100px;"
+                   ng-repeat="language in vm.languages">
+                <img ng-src={{language.image}} style="z-index: 2;">
+                <input type="radio" name="group" ng-model="vm.languageId"
+                       value={{language.id}} ng-change="vm.languageChanged()">
+
+                <div class="item-content"
+                     style="padding-left: 10px;font-size: 26px;min-height:60px;
+                     padding-top: 11px; padding-bottom: 10px;">
+                    {{language.label}}
+                </div>
+                <i class="radio-icon ion-checkmark" style="padding-top: 30px;"></i>
+            </label>
+
+        </div>
+        <div>{{vm.languageId}}</div>
+    </ion-content>
+</ion-view>

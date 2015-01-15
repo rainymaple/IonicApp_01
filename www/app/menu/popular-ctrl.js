@@ -7,6 +7,7 @@
         angular.forEach(vm.popularFoods,function(food){
             food.image = config.getImage('/food/'+food.id+'.jpg');
         })
+
     }
 })();
 
