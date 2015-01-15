@@ -14,6 +14,7 @@
         dataServicePath: buildDataServicePath,
         languages:getLanguages,
         languageId:1,
+        languageChangedEvent:'LanguageChangedEvent',
         cacheMaxAge: 5000,
         wwwPath: wwwPath,
         enableConsoleLog: true,

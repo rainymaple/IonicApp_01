@@ -1,58 +1,75 @@
 (function () {
-    angular.module('soupebolApp').factory('foodService',['config', foodService]);
+    angular.module('soupebolApp').factory('foodService', ['config', foodService]);
 
     function foodService(config) {
         return {
-            getAllFood: function () {
-                return getAllFood();
-            },
-            getAllCategoriesWithFood: function () {
-                var categories= getAllCategoryWithFood();
-                angular.forEach(categories,function(category,key){
-                    category.image=config.getImage('category/'+category.image);
-                    category.foodCount=category.food.length;
+            getAllFoods: getAllFoods,
+            getFoodsByName: getFoodsByName,
+            getPopularFoods:getPopularFoods,
+            getFoodById: function (id) {
+                var foods = getAllFood();
+                return _.find(foods, {"id": parseInt(id)});
+            }
+        };
+
+        // service functions
+        
+        function getFoodsByName(categoryWithFood, foodName) {
+            var categories = [];
+            angular.forEach(categoryWithFood, function (category) {
+                var foods = _.filter(category.food, function (food) {
+                    return food.name.indexOf(foodName) > 0;
                 });
-                return categories;
-            },
-            getAllCategoriesByFoodName: function (categoryWithFood,foodName) {
-                var categories= [];
-                angular.forEach(categoryWithFood,function(category){
-                    var foods =_.filter(category.food,function(food){
-                        return food.name.indexOf(foodName)>0;
-                    });
-                    if(foods.length>0){
-                        var cat = angular.copy(category);
-                        cat.food=foods;
-                        cat.foodCount=foods.length;
-                        categories.push(cat);
+                if (foods.length > 0) {
+                    var cat = angular.copy(category);
+                    cat.food = foods;
+                    cat.foodCount = foods.length;
+                    categories.push(cat);
+                }
+            });
+            return categories;
+        }
+
+        function getAllFoods() {
+                var categories = getAllCategoryWithFood();
+
+                var languageId =config.languageId;
+                var nameField = 'name';
+                if (languageId == 2) {
+                    nameField = 'nameF';
+                }
+                angular.forEach(categories, function (category, key) {
+                    category.image = config.getImage('category/' + category.image);
+                    category.foodCount = category.food.length;
+
+                    if (languageId && nameField !== 'name') {
+                        category.name = category[nameField];
+                        angular.forEach(category.food, function (food) {
+                            food.name = food[nameField];
+                        })
                     }
                 });
                 return categories;
-            },
-            getPopularFood:function(){
-                var popular= [];
-                var categoryWithFood =getAllCategoryWithFood();
-                angular.forEach(categoryWithFood,function(category){
-                    angular.forEach(category.food,function(food){
-                        if(food.isPopular){
+            }
+
+        function getPopularFoods(){
+                var popular = [];
+                var categoryWithFood = getAllFoods();
+                angular.forEach(categoryWithFood, function (category) {
+                    angular.forEach(category.food, function (food) {
+                        if (food.isPopular) {
                             popular.push(food);
                         }
                     });
                 });
                 return popular;
-            },
-            getFoodById: function (id) {
-                var foods = getAllFood();
-                return  _.find(foods,{"id":parseInt(id)});
-            }
         }
     }
-
     function getAllCategoryWithFood() {
         var categoryWithFood =
             [
                 {
-                    "id": 1, "name": "Appetizers", "nameF": "Entrées","image":"appetizer.png",
+                    "id": 1, "name": "Appetizers", "nameF": "Entrées", "image": "appetizer.png",
                     "food": [
                         {
                             "id": 2,
@@ -149,7 +166,7 @@
                         "categoryId": 2,
                         "isPopular": false,
                         "category": null
-                    }], "image":"soup.png", "id": 2, "name": "Soup and Noodles", "nameF": "Soupe et Nuilles"
+                    }], "image": "soup.png", "id": 2, "name": "Soup and Noodles", "nameF": "Soupe et Nuilles"
             }, {
                 "food": [
                     {
@@ -194,7 +211,7 @@
                         "categoryId": 3,
                         "isPopular": false,
                         "category": null
-                    }], "image":"grill.png", "id": 3, "name": "Grilled", "nameF": "Grillades"
+                    }], "image": "grill.png", "id": 3, "name": "Grilled", "nameF": "Grillades"
             },
                 {
                     "food": [
@@ -261,7 +278,7 @@
                             "categoryId": 4,
                             "isPopular": false,
                             "category": null
-                        }], "image":"meal.png", "id": 4, "name": "Meals", "nameF": "Repas"
+                        }], "image": "meal.png", "id": 4, "name": "Meals", "nameF": "Repas"
                 }, {
                 "food": [
                     {
@@ -292,7 +309,7 @@
                         "categoryId": 5,
                         "isPopular": false,
                         "category": null
-                    }], "image":"special.png", "id": 5, "name": "Speciallities", "nameF": "Spécialités"
+                    }], "image": "special.png", "id": 5, "name": "Speciallities", "nameF": "Spécialités"
             }, {
                 "food": [
                     {
@@ -351,7 +368,7 @@
                         "categoryId": 6,
                         "isPopular": false,
                         "category": null
-                    }], "image":"beverages.png", "id": 6, "name": "Beverages", "nameF": "Breuvages"
+                    }], "image": "beverages.png", "id": 6, "name": "Beverages", "nameF": "Breuvages"
             }];
 
         return categoryWithFood;

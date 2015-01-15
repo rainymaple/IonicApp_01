@@ -25,7 +25,7 @@
                 }
             })
             .state('app.welcome', {
-                url: '/welcome',
+                url: '/welcome/:languageId',
                 views: {
                     "mainContent": {
                         templateUrl: "app/home/welcome.html"
@@ -34,7 +34,7 @@
 
             })
             .state('app.menu', {
-                url: '/menu',
+                url: '/menu/:languageId',
                 views: {
                     "mainContent": {
                         templateUrl: "app/menu/menu.html"
@@ -42,7 +42,7 @@
                 }
             })
             .state('app.popular', {
-                url: '/popular',
+                url: '/popular/:languageId',
                 views: {
                     "mainContent": {
                         templateUrl: "app/menu/popular.html"
@@ -74,7 +74,7 @@
                 }
             })
             .state('app.contact', {
-                url: '/contact',
+                url: '/contact/:languageId',
                 views: {
                     "mainContent": {
                         templateUrl: "app/contact/contact-info.html"

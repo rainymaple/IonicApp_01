@@ -5,12 +5,12 @@
 
     function menuCtrl($state, foodService, config) {
         var vm = this;
-        vm.categories = foodService.getAllCategoriesWithFood();
+        vm.categories = foodService.getAllFoods();
 
-        vm.categories_shrimp=foodService.getAllCategoriesByFoodName(vm.categories,'shrimp');
+        //vm.categories_shrimp = foodService.getFoodsByName(vm.categories, 'shrimp');
 
-        vm.openDropdown=false;
-        vm.toggleDropdown = function(){
+        vm.openDropdown = false;
+        vm.toggleDropdown = function () {
             vm.openDropdown = !vm.openDropdown;
         };
 
