@@ -22,27 +22,27 @@
         <ion-content class="has-header" style="top: 80px;">
             <a class="item item-icon-left" menu-close ng-click=vm.gotoView("app.welcome")>
                 <i class="icon ion-ios-home-outline"></i>
-                Home
+                {{vm.home}}
             </a>
             <a class="item item-icon-left" menu-close ng-click=vm.gotoView("app.menu")>
                 <i class="icon ion-ios-book-outline"></i>
-                Menu
+                {{vm.menu}}
             </a>
             <a class="item item-icon-left" menu-close ng-click=vm.gotoView("app.popular")>
                 <i class="icon ion-android-favorite-outline"></i>
-                Popular
+                {{vm.popular}}
             </a>
             <a class="item item-icon-left" menu-close ng-click=vm.gotoView("app.map")>
                 <i class="icon ion-ios-navigate-outline"></i>
-                Map
+                {{vm.googleMap}}
             </a>
             <a class="item item-icon-left" menu-close ng-click=vm.gotoView("app.language")>
                 <i class="icon ion-ios-world-outline"></i>
-                Language
+                Language/Langue/语言
             </a>
             <a class="item item-icon-left" menu-close ng-click=vm.gotoView("app.contact")>
                 <i class="icon ion-ios-information-outline"></i>
-                Contact us
+                {{vm.about}}
             </a>
         </ion-content>
     </ion-side-menu>
