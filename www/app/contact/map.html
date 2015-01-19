@@ -1,5 +1,21 @@
-<ion-view title="Location">
+<ion-view title="Location Map" ng-controller="mapCtrl as vm">
     <ion-content class="has-header padding">
-        <h1>This is the Map</h1>
+        <ui-gmap-google-map draggable="true" center="vm.map.center" zoom="vm.map.zoom">
+            <ui-gmap-marker idkey="vm.marker.id" coords="vm.marker.coords" options="vm.marker.options"
+                            click="vm.clickMarker()" events="vm.marker.events">
+                <ui-gmap-window options="vm.windowOptions" closeClick="vm.closeClick()">
+                    <div style="width: 158px;">
+                        <div align="center" style="font-weight: bold;">{{vm.title}}</div>
+                        <div>{{vm.address}}</div>
+                        <div>{{vm.phone}}</div>
+                    </div>
+
+                </ui-gmap-window>
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
+        <div style="margin-top: 6px;margin-left: 5px;">
+            <div><span>Address:</span><span style="margin-left: 5px;">{{vm.address}}{{vm.postalCode}}</span></div>
+            <div><span>Phone:</span><span style="margin-left: 16px;">{{vm.phone}}</span></div>
+        </div>
     </ion-content>
 </ion-view>

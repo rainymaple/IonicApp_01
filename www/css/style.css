@@ -43,3 +43,14 @@
 #sideMenu a{
     border-width: 0;
 }
+
+/* google map*/
+.angular-google-map-container { height: 460px; }
+
+/* Welcome background image*/
+#backgroundImage.portrait{
+    width:266%;
+}
+#backgroundImage.landscape{
+    width:116%;
+}

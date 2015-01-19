@@ -6,15 +6,19 @@
     var wwwPath = url.substr(0, url.indexOf('index.html'));
     var dataServicePrefix = "/api/";
     var imagePath = wwwPath + 'img/';
+    var orientations = {portrait: "portrait", landscape: "landscape"};
 
     var config = {
         docTitle: "Soupebol",
         dataServicePrefix: dataServicePrefix,
         getImage: getImage,
         dataServicePath: buildDataServicePath,
-        languages:getLanguages,
-        languageId:1,
-        languageChangedEvent:'LanguageChangedEvent',
+        languages: getLanguages,
+        languageId: 1,
+        orientations: orientations,
+        orientation: orientations.portrait,
+        orientationChangedEvent:'orientationChangedEvent',
+        languageChangedEvent: 'LanguageChangedEvent',
         cacheMaxAge: 5000,
         wwwPath: wwwPath,
         enableConsoleLog: true,
@@ -41,7 +45,7 @@
     }
 
     function getLanguages() {
-        return  [
+        return [
             {id: 1, language: "English", label: "English", image: getImage("language/UK.png")},
             {id: 2, language: "French", label: "Français", image: getImage("language/France.png")},
             {id: 3, language: "Chinese", label: "中文", image: getImage("language/China.png")}
@@ -57,5 +61,14 @@
             $logProvider.debugEnabled(true);
         }
     }])
+        .config(function (uiGmapGoogleMapApiProvider) {
+            uiGmapGoogleMapApiProvider.configure({
+                //    key: 'your api key',
+                v: '3.17',
+                //china: true,
+                libraries: 'weather,geometry,visualization'
+            });
+        })
+
 
 })();

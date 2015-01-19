@@ -4,9 +4,9 @@
     function popularCtrl($state, foodService, config) {
         var vm = this;
 
-               vm.popularFoods = foodService.getPopularFoods();
-        angular.forEach(vm.popularFoods,function(food){
-            food.image = config.getImage('food/'+food.id+'.jpg');
+        vm.popularFoods = foodService.getPopularFoods();
+        angular.forEach(vm.popularFoods, function (food) {
+            food.image = config.getImage('food/' + food.id + '.jpg');
         })
 
     }

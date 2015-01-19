@@ -1,5 +1,7 @@
 <ion-view title="Welcome to Soupebol" ng-controller="welcomeCtrl as vm">
-    <ion-content class="has-header">
-        <h1>Welcome({{vm.languageId}})</h1>
+    <ion-content class="has-header" scroll="false">
+        <div id="bgDiv" style="opacity: 0.6;width: 100%;height: 100%;">
+        <img id='backgroundImage' ng-class="{portrait:(vm.isPortrait),landscape:!(vm.isPortrait)}" ng-src={{vm.background}}>
+        </div>
     </ion-content>
 </ion-view>

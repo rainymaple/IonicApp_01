@@ -1,4 +1,4 @@
-angular.module("soupebolApp", ["ngCordova","ionic",'ngAnimate'])
+angular.module("soupebolApp", ["ngCordova","ionic",'ngAnimate','uiGmapgoogle-maps'])
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

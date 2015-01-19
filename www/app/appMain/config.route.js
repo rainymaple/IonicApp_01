@@ -15,7 +15,7 @@
                 templateUrl: "app/layout/menu-layout.html"
 
             })
-            .state('app.home', {
+/*            .state('app.home', {
                 //abstract: true,
                 url: '/home',
                 views: {
@@ -23,7 +23,7 @@
                         templateUrl: "app/home/welcome.html"
                     }
                 }
-            })
+            })*/
             .state('app.welcome', {
                 url: '/welcome/:languageId',
                 views: {
@@ -81,7 +81,7 @@
                     }
                 }
             });
-        $urlRouterProvider.otherwise('/app/map');
+        $urlRouterProvider.otherwise('/app/welcome/1');
 
     }
 

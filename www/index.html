@@ -18,6 +18,10 @@
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="lib/lowdash/lowdash.js"></script>
 
+    <!-- google map api -->
+    <!--<script src='https://maps.googleapis.com/maps/api/js?sensor=false'></script>-->
+    <script src="lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
+
     <!-- cordova script (this will be a 404 during development)
       this file will not be found in your development files,
       but rather automatically included when running or emulating your app.-->
@@ -30,10 +34,11 @@
     <script src="app/appMain/config.route.js"></script>
     <script src="app/home/welcome-ctrl.js"></script>
     <script src="app/layout/menu-layout-ctrl.js"></script>
+    <script src="app/layout/language-ctrl.js"></script>
     <script src="app/menu/menu-ctrl.js"></script>
     <script src="app/menu/popular-ctrl.js"></script>
     <script src="app/food/food-ctrl.js"></script>
-    <script src="app/layout/language-ctrl.js"></script>
+    <script src="app/contact/map-ctrl.js"></script>
     <script src="app/service/food-service.js"></script>
   </head>
   <body ng-app="soupebolApp">
