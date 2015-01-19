@@ -17,7 +17,7 @@
         languageId: 1,
         orientations: orientations,
         orientation: orientations.portrait,
-        orientationChangedEvent:'orientationChangedEvent',
+        orientationChangedEvent: 'orientationChangedEvent',
         languageChangedEvent: 'LanguageChangedEvent',
         cacheMaxAge: 5000,
         wwwPath: wwwPath,
@@ -61,14 +61,14 @@
             $logProvider.debugEnabled(true);
         }
     }])
-        .config(function (uiGmapGoogleMapApiProvider) {
-            uiGmapGoogleMapApiProvider.configure({
-                //    key: 'your api key',
-                v: '3.17',
-                //china: true,
-                libraries: 'weather,geometry,visualization'
-            });
-        })
+    .config(function (uiGmapGoogleMapApiProvider) {
+        uiGmapGoogleMapApiProvider.configure({
+            //    key: 'your api key',
+            v: '3.17',
+            //china: true,
+            libraries: 'weather,geometry,visualization'
+        });
+    })
 
 
 })();

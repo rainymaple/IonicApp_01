@@ -1,8 +1,8 @@
 (function () {
     angular.module('soupebolApp')
-        .controller('menuLayoutCtrl', ['$scope', '$state', '$ionicHistory', 'config', menuLayoutCtrl]);
+        .controller('menuLayoutCtrl', ['$scope', 'config', 'utility', menuLayoutCtrl]);
 
-    function menuLayoutCtrl($scope, $state, $ionicHistory, config) {
+    function menuLayoutCtrl($scope, config, utility) {
         var vm = this;
         vm.headerImage = config.getImage('common/head.jpg');
 
@@ -24,20 +24,10 @@
         });
 
         vm.gotoView = function (state, param) {
-            $ionicHistory.nextViewOptions({
-                disableBack: true
-            });
-
-            if (param) {
-                param.languageId = config.languageId;
-            } else {
-                param = {languageId: config.languageId}
-            }
-            $state.go(state, param);
-
+            utility.gotoView(state, param, true);
         };
 
-        function setLanguage(index){
+        function setLanguage(index) {
             vm.home = sideMenu.home[index];
             vm.menu = sideMenu.menu[index];
             vm.popular = sideMenu.popular[index];
