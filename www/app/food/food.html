@@ -1,5 +1,39 @@
-<ion-view title="Food" ng-controller="foodCtrl as vm">
+<ion-view title="Food Details" ng-controller="foodCtrl as vm">
     <ion-content class="has-header padding">
-        <h3>{{vm.food.name}}</h3>
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img ng-src={{vm.food.image}}>
+                <h2>{{vm.food.name}}</h2>
+                <p>$20.00</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" ng-src={{vm.food.imageBig}}>
+                <p>
+                    This is the details of the food
+                </p>
+                <p>
+                    <a href="#" class="subdued">1 Like</a>
+                    <a href="#" class="subdued">5 Comments</a>
+                </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup"></i>
+                    Like
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i>
+                    Comment
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share"></i>
+                    Share
+                </a>
+            </div>
+
+        </div>
     </ion-content>
 </ion-view>

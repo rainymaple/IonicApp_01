@@ -5,18 +5,22 @@
         return {
             getAllFoods: getAllFoods,
             getFoodsByName: getFoodsByName,
-            getPopularFoods:getPopularFoods,
+            getPopularFoods: getPopularFoods,
             getFoodById: function (id) {
-                var foods = getAllFood();
-                return _.find(foods, {"id": parseInt(id)});
+                var allFoods = getAllFoods();
+                var foods =_.flatten(allFoods,'food');
+                return _.find(foods, {id:Number(id)});
+
             }
         };
 
         // service functions
-        
+
         function getFoodsByName(categoryWithFood, foodName) {
             var categories = [];
-            angular.forEach(categoryWithFood, function (category) {
+            var allFoods = categoryWithFood || getAllFoods();
+
+            angular.forEach(allFoods, function (category) {
                 var foods = _.filter(category.food, function (food) {
                     return food.name.indexOf(foodName) > 0;
                 });
@@ -31,40 +35,41 @@
         }
 
         function getAllFoods() {
-                var categories = getAllCategoryWithFood();
+            var categories = getAllCategoryWithFood();
 
-                var languageId =config.languageId;
-                var nameField = 'name';
-                if (languageId == 2) {
-                    nameField = 'nameF';
+            var languageId = config.languageId;
+            var nameField = 'name';
+            if (languageId == 2) {
+                nameField = 'nameF';
+            }
+            angular.forEach(categories, function (category, key) {
+                category.image = config.getImage('category/' + category.image);
+                category.foodCount = category.food.length;
+
+                if (languageId && nameField !== 'name') {
+                    category.name = category[nameField];
+                    angular.forEach(category.food, function (food) {
+                        food.name = food[nameField];
+                    })
                 }
-                angular.forEach(categories, function (category, key) {
-                    category.image = config.getImage('category/' + category.image);
-                    category.foodCount = category.food.length;
+            });
+            return categories;
+        }
 
-                    if (languageId && nameField !== 'name') {
-                        category.name = category[nameField];
-                        angular.forEach(category.food, function (food) {
-                            food.name = food[nameField];
-                        })
+        function getPopularFoods() {
+            var popular = [];
+            var categoryWithFood = getAllFoods();
+            angular.forEach(categoryWithFood, function (category) {
+                angular.forEach(category.food, function (food) {
+                    if (food.isPopular) {
+                        popular.push(food);
                     }
                 });
-                return categories;
-            }
-
-        function getPopularFoods(){
-                var popular = [];
-                var categoryWithFood = getAllFoods();
-                angular.forEach(categoryWithFood, function (category) {
-                    angular.forEach(category.food, function (food) {
-                        if (food.isPopular) {
-                            popular.push(food);
-                        }
-                    });
-                });
-                return popular;
+            });
+            return popular;
         }
     }
+
     function getAllCategoryWithFood() {
         var categoryWithFood =
             [

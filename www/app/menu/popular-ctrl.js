@@ -7,8 +7,11 @@
         vm.popularFoods = foodService.getPopularFoods();
         angular.forEach(vm.popularFoods, function (food) {
             food.image = config.getImage('food/' + food.id + '.jpg');
-        })
+        });
 
+        vm.selectFood = function (id) {
+            $state.go("app.food", {id: id})
+        };
     }
 })();
 
