@@ -1,4 +1,9 @@
 <ion-view title="Location Map" ng-controller="mapCtrl as vm">
+    <ion-nav-buttons side="right">
+        <button class="button" style="position:relative;border-width: 0;" ng-click="vm.gotoHome()">
+            <i class="icon ion-home"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-content class="has-header padding">
         <ui-gmap-google-map draggable="true" center="vm.map.center" zoom="vm.map.zoom">
             <ui-gmap-marker idkey="vm.marker.id" coords="vm.marker.coords" options="vm.marker.options"

@@ -1,8 +1,18 @@
 (function () {
-    angular.module('soupebolApp').controller('mapCtrl', ['$state', 'config', mapCtrl]);
+    angular.module('soupebolApp').controller('mapCtrl', ['utility', mapCtrl]);
 
-    function mapCtrl($state, config) {
+    function mapCtrl(utility) {
         var vm = this;
+
+        vm.gotoHome = function () {
+            utility.gotoView('app.welcome', {}, true);
+        };
+        vm.title = "Soupebol";
+        vm.address = "1245, rue du Square Phillips";
+        vm.phone = "(514) 282-8388";
+        vm.postalCode=" H3B 3E9";
+
+        /* map settings*/
         vm.map = {
             center: {
                 latitude: 45.504110,
@@ -18,10 +28,6 @@
         vm.closeClick = function () {
             vm.windowOptions.visible = false;
         };
-        vm.title = "Soupebol";
-        vm.address = "1245, rue du Square Phillips";
-        vm.phone = "(514) 282-8388";
-        vm.postalCode=" H3B 3E9";
         vm.marker = {
             coords: {
                 latitude: 45.504110,

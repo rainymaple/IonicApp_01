@@ -1,9 +1,9 @@
 (function () {
     angular.module('soupebolApp')
 
-        .controller('menuCtrl', ['$state', 'foodService', 'config', menuCtrl]);
+        .controller('menuCtrl', ['foodService', 'utility', menuCtrl]);
 
-    function menuCtrl($state, foodService, config) {
+    function menuCtrl(foodService, utility) {
         var vm = this;
         vm.categories = foodService.getAllFoods();
 
@@ -17,11 +17,14 @@
         setupAccordion();
 
         vm.selectFood = function (id) {
-            $state.go("app.food", {id: id})
+            utility.gotoView('app.food', {id: id}, false);
+        };
+
+        vm.gotoHome = function () {
+            utility.gotoView('app.welcome', {}, true);
         };
 
         function setupAccordion() {
-
             vm.toggleGroup = function (group) {
                 if (vm.isGroupShown(group)) {
                     vm.shownGroup = null;

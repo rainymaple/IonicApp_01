@@ -30,18 +30,28 @@
         return imagePath + fileName.trim();
     }
 
-    function buildDataServicePath(endPoint) {
+    function buildDataServicePath(endPoint,prefix) {
         if (!endPoint) {
             throw "End Point Is Empty!!";
         }
-        endPoint = endPoint.trim();
-        if (endPoint.indexOf('/') === 0) {
-            endPoint = endPoint.substr(1);
+        endPoint = buildPath(endPoint.trim());
+
+        if (!prefix) {
+            prefix = dataServicePrefix;
+        } else {
+            prefix = buildPath(prefix);
         }
-        if (endPoint.indexOf('/') === endPoint.length - 1) {
-            endPoint = endPoint.substr(0, endPoint.length - 1);
+        return prefix + endPoint;
+    }
+
+    function buildPath(path) {
+        if (path.indexOf('/') === 0) {
+            path = path.substr(1);
         }
-        return dataServicePrefix + endPoint;
+        if (path.indexOf('/') === path.length - 1) {
+            path = path.substr(0, path.length - 1);
+        }
+        return path;
     }
 
     function getLanguages() {

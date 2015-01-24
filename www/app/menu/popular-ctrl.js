@@ -1,7 +1,7 @@
 (function () {
-    angular.module('soupebolApp').controller('popularCtrl', ['$state', 'foodService', 'config', popularCtrl]);
+    angular.module('soupebolApp').controller('popularCtrl', ['utility', 'foodService', 'config', popularCtrl]);
 
-    function popularCtrl($state, foodService, config) {
+    function popularCtrl(utility, foodService, config) {
         var vm = this;
 
         vm.popularFoods = foodService.getPopularFoods();
@@ -10,7 +10,10 @@
         });
 
         vm.selectFood = function (id) {
-            $state.go("app.food", {id: id})
+            utility.gotoView('app.welcome', {id: id}, false);
+        };
+        vm.gotoHome = function () {
+            utility.gotoView('app.welcome', {}, true);
         };
     }
 })();

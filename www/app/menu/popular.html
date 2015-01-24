@@ -1,10 +1,17 @@
-<ion-view title="Popular Dishes">
-    <ion-content class="has-header" ng-controller="popularCtrl as vm">
+<ion-view title="Popular Dishes" ng-controller="popularCtrl as vm">
+    <ion-nav-buttons side="right">
+        <button class="button" style="position:relative;border-width: 0;" ng-click="vm.gotoHome()">
+            <i class="icon ion-home"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header" >
         <div class="list">
             <a class="item item-thumbnail-left" href="#" ng-click="vm.selectFood(food.id)"
                ng-repeat="food in vm.popularFoods">
                 <img ng-src={{food.image}}>
+
                 <p style="font-size: 18px;height: 40px;white-space: normal;margin-top: 5px;">{{food.name}}</p>
+
                 <p>$20.00</p>
             </a>
         </div>
