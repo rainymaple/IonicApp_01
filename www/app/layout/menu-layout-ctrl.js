@@ -5,6 +5,8 @@
     function menuLayoutCtrl($scope, config, utility) {
         var vm = this;
         vm.headerImage = config.getImage('common/head.jpg');
+        vm.languageId = config.languageId;
+        vm.gotoView = gotoView;
 
         var sideMenu = {
             home: ['Home', 'Accueil', '首页'],
@@ -13,19 +15,21 @@
             googleMap: ['Google Map', 'Carte', '地图'],
             about: ['Contact us', 'Contactez-nous', '联系信息']
         };
-        setLanguage(0);
+
+        (function(){
+            setLanguage(0);
+            $scope.$on(config.languageChangedEvent, function (event, languageId) {
+                vm.newLanguageId = languageId;
+                var index = parseInt(languageId) - 1;
+                setLanguage(index);
+            });
+        })();
 
 
-        vm.languageId = config.languageId;
-        $scope.$on(config.languageChangedEvent, function (event, languageId) {
-            vm.newLanguageId = languageId;
-            var index = parseInt(languageId) - 1;
-            setLanguage(index);
-        });
 
-        vm.gotoView = function (state, param) {
+        function gotoView(state, param) {
             utility.gotoView(state, param, true);
-        };
+        }
 
         function setLanguage(index) {
             vm.home = sideMenu.home[index];
@@ -34,6 +38,7 @@
             vm.googleMap = sideMenu.googleMap[index];
             vm.about = sideMenu.about[index];
         }
+
     }
 
 })();

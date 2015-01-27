@@ -15,9 +15,10 @@
                         <i class="icon ion-android-search"></i>
                         <a>Search</a>
                     </ion-item>
-                    <ion-item class="item-accordion item-dark item-icon-left">
+                    <ion-item class="item-accordion item-dark item-icon-left"
+                            ng-click="vm.gotoPopular()">
                         <i class="icon ion-ribbon-a"></i>
-                        <a>Show Popular</a>
+                        <a>Best Selling</a>
                     </ion-item>
                     <ion-item class="item-accordion item-dark item-icon-left">
                         <i class="icon ion-aperture"></i>
@@ -29,7 +30,6 @@
         </button>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        <input type="checkbox" ng-model="vm.showSearch" ng-show="false">
         <div style="display: flex" class="search-box" ng-hide="!vm.showSearch">
             <label class="item item-input" style="border-style: none;">
                 <i class="icon ion-search placeholder-icon"></i>

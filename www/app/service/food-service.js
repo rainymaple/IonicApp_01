@@ -6,15 +6,17 @@
             getAllFoods: getAllFoods,
             getFoodsByName: getFoodsByName,
             getPopularFoods: getPopularFoods,
-            getFoodById: function (id) {
-                var allFoods = getAllFoods();
-                var foods =_.flatten(allFoods,'food');
-                return _.find(foods, {id:Number(id)});
-
-            }
+            getFoodById: getFoodById
         };
 
         // service functions
+
+        function getFoodById(id) {
+            var allFoods = getAllFoods();
+            var foods =_.flatten(allFoods,'food');
+            return _.find(foods, {id:Number(id)});
+
+        }
 
         function getFoodsByName(categoryWithFood, foodName) {
             var categories = [];
