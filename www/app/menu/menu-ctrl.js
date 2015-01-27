@@ -1,28 +1,31 @@
 (function () {
     angular.module('soupebolApp')
 
-        .controller('menuCtrl', ['$scope','foodService', 'utility', menuCtrl]);
+        .controller('menuCtrl', ['$scope', 'foodService', 'utility', menuCtrl]);
 
-    function menuCtrl($scope,foodService, utility) {
+    function menuCtrl($scope, foodService, utility) {
         var vm = this;
-        vm.search='';
+        vm.search = '';
+        vm.showSearch = false;
+        vm.openDropdown = false;
         vm.categories = foodService.getAllFoods();
         vm.allFoods = vm.categories;
 
-        //vm.categories_shrimp = foodService.getFoodsByName(vm.categories, 'shrimp');
-
-        vm.openDropdown = false;
         vm.toggleDropdown = function () {
             vm.openDropdown = !vm.openDropdown;
         };
+        vm.toggleSearchBox = function () {
+            vm.clearSearch();
+            vm.showSearch = !vm.showSearch;
+        };
 
-        vm.clearSearch=function(){
-            vm.search='';
+        vm.clearSearch = function () {
+            vm.search = '';
         };
 
         setupAccordion();
 
-        $scope.$watch('vm.search',function(current,origin){
+        $scope.$watch('vm.search', function (current, origin) {
             vm.categories = foodService.getFoodsByName(vm.allFoods, vm.search);
         });
         vm.selectFood = function (id) {
