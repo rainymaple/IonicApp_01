@@ -1,12 +1,13 @@
 (function () {
     angular.module('soupebolApp')
 
-        .controller('menuCtrl', ['foodService', 'utility', menuCtrl]);
+        .controller('menuCtrl', ['$scope','foodService', 'utility', menuCtrl]);
 
-    function menuCtrl(foodService, utility) {
+    function menuCtrl($scope,foodService, utility) {
         var vm = this;
         vm.search='';
         vm.categories = foodService.getAllFoods();
+        vm.allFoods = vm.categories;
 
         //vm.categories_shrimp = foodService.getFoodsByName(vm.categories, 'shrimp');
 
@@ -21,6 +22,9 @@
 
         setupAccordion();
 
+        $scope.$watch('vm.search',function(current,origin){
+            vm.categories = foodService.getFoodsByName(vm.allFoods, vm.search);
+        });
         vm.selectFood = function (id) {
             utility.gotoView('app.food', {id: id}, false);
         };

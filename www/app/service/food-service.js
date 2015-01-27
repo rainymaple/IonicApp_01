@@ -20,6 +20,9 @@
             var categories = [];
             var allFoods = categoryWithFood || getAllFoods();
 
+            if(!foodName){
+                return allFoods;
+            }
             angular.forEach(allFoods, function (category) {
                 var foods = _.filter(category.food, function (food) {
                     return food.name.indexOf(foodName) > 0;
