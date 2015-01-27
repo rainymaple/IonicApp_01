@@ -5,6 +5,7 @@
 
     function menuCtrl(foodService, utility) {
         var vm = this;
+        vm.search='';
         vm.categories = foodService.getAllFoods();
 
         //vm.categories_shrimp = foodService.getFoodsByName(vm.categories, 'shrimp');
@@ -12,6 +13,10 @@
         vm.openDropdown = false;
         vm.toggleDropdown = function () {
             vm.openDropdown = !vm.openDropdown;
+        };
+
+        vm.clearSearch=function(){
+            vm.search='';
         };
 
         setupAccordion();

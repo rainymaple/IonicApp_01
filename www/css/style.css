@@ -1,4 +1,4 @@
-/*item-accordion*/
+/*--- item-accordion ---*/
 .list .item.item-accordion {
     line-height: 38px;
     padding-top: 0;
@@ -13,7 +13,7 @@
     display: block !important;
 }
 
-/*dropdown-menu*/
+/*--- dropdown-menu ---*/
 .open > .dropdown-menu {
     display: block;
 }
@@ -44,13 +44,67 @@
     border-width: 0;
 }
 
-/* google map*/
-.angular-google-map-container { height: 460px; }
+/*---  google map ---*/
+.angular-google-map-container {
+    /*
+      making the map with dynamic height
+      http://angular-ui.github.io/angular-google-maps/#!/faq
+    */
+    height: 90%;
+    width: 100%;
+    position: absolute;
+}
 
-/* Welcome background image*/
+.menu-map ion-content{
+    display: flex;flex-direction: row;align-items: stretch;
+}
+
+.menu-map .scroll{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.map-area{
+    height: 100%;
+}
+.address-area{
+    /*
+        the key is "margin-top: auto;", in a flex container with flex-direction:column
+        this will make the element stick to the bottom !
+    */
+    margin-top: auto;
+    margin-left: 5px;
+    height: 50px;
+}
+
+/*---  Welcome background image ---*/
 #backgroundImage.portrait{
     width:266%;
 }
 #backgroundImage.landscape{
     width:116%;
+}
+
+
+/*--- Search Box ---*/
+.search-box{
+    display: flex;
+    justify-content: flex-end;
+}
+.search-box label{
+    width: 100%;
+}
+.search-box label input{
+    flex: 1 0 85%;
+    border-bottom: 1px solid #00cb00;
+}
+.search-box .button-group{
+    display: flex; margin-right: 5px;
+}
+.search-box .button-group button{
+    min-width: 30px;
+    width: 35px;
+    padding: 0;
 }
